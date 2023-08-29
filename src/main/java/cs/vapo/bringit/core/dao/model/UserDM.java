@@ -10,10 +10,6 @@ public class UserDM {
 
     private String email;
 
-    private String password;
-
-    private String passwordSalt;
-
     private List<ListDM> lists;
 
     private List<ParticipantDM> participantLists;
@@ -40,22 +36,6 @@ public class UserDM {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPasswordSalt() {
-        return passwordSalt;
-    }
-
-    public void setPasswordSalt(String passwordSalt) {
-        this.passwordSalt = passwordSalt;
     }
 
     public List<ListDM> getLists() {
