@@ -1,5 +1,6 @@
 package cs.vapo.bringit.core.dao.list;
 
+import cs.vapo.bringit.core.dao.item.ItemEntity;
 import cs.vapo.bringit.core.dao.participant.ParticipantEntity;
 import cs.vapo.bringit.core.dao.user.UserEntity;
 import jakarta.persistence.Column;
@@ -21,7 +22,7 @@ public class ListEntity {
     private String id;
 
     @ManyToOne
-    @JoinColumn(name="owner", nullable=false)
+    @JoinColumn(name = "owner", nullable = false)
     private UserEntity owner;
 
     @Column(name = "list_title")
@@ -30,6 +31,9 @@ public class ListEntity {
     @OneToMany
     @JoinColumn(name = "list")
     private List<ParticipantEntity> participants;
+
+    @OneToMany(mappedBy = "list")
+    private List<ItemEntity> items;
 
     public String getId() {
         return id;
@@ -61,5 +65,13 @@ public class ListEntity {
 
     public void setParticipants(List<ParticipantEntity> participantEntities) {
         this.participants = participantEntities;
+    }
+
+    public List<ItemEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemEntity> items) {
+        this.items = items;
     }
 }

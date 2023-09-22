@@ -33,6 +33,11 @@ public class ListDataService {
         return modelMapper.map(entity.get(), ListDM.class);
     }
 
+    /**
+     * Finds the lists given the owner's id
+     * @param ownerId the owner id
+     * @return the lists that belong to the owner
+     */
     public List<ListDM> findListsByOwnerId(final String ownerId) {
         final List<ListEntity> lists = repository.findListByOwnerId(ownerId);
         return MapperUtils.mapList(lists, ListDM.class);
