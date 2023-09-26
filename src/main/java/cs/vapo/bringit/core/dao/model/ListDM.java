@@ -15,6 +15,8 @@ public class ListDM {
 
     private List<ParticipantDM> participants;
 
+    private List<ItemDM> items;
+
 
     public String getId() {
         return id;
@@ -46,5 +48,13 @@ public class ListDM {
 
     public void setParticipants(List<ParticipantDM> participants) {
         this.participants = participants;
+    }
+
+    public List<ItemDM> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemDM> items) {
+        this.items = items;
     }
 }

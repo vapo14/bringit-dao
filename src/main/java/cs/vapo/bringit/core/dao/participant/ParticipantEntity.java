@@ -22,7 +22,7 @@ public class ParticipantEntity {
     private ListEntity list;
 
     @ManyToOne
-    @JoinColumn(name="participant", nullable=false)
+    @JoinColumn(name = "participant", nullable = false)
     private UserEntity participant;
 
     public String getId() {
