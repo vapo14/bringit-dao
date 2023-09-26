@@ -1,7 +1,9 @@
 package cs.vapo.bringit.core.dao.list;
 
 import cs.vapo.bringit.core.dao.annotations.DataService;
+import cs.vapo.bringit.core.dao.item.ItemEntity;
 import cs.vapo.bringit.core.dao.mapper.MapperUtils;
+import cs.vapo.bringit.core.dao.model.ItemDM;
 import cs.vapo.bringit.core.dao.model.ListDM;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
@@ -41,5 +43,20 @@ public class ListDataService {
     public List<ListDM> findListsByOwnerId(final String ownerId) {
         final List<ListEntity> lists = repository.findListByOwnerId(ownerId);
         return MapperUtils.mapList(lists, ListDM.class);
+    }
+
+    /**
+     * Adds the given item to the list
+     * @param listId parent list id
+     * @param item the item to add
+     */
+    public void addItemToList(final String listId, final ItemDM item) {
+        final ItemEntity itemEntity = modelMapper.map(item, ItemEntity.class);
+        final Optional<ListEntity> listOptional = repository.findById(listId);
+        if (listOptional.isEmpty()) {
+            throw new EntityNotFoundException(String.format("List id %s not found for operation insert item", listId));
+        }
+        final ListEntity list = listOptional.get();
+        list.getItems().add(itemEntity);
     }
 }

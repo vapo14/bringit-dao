@@ -22,20 +22,14 @@ public class ItemDataServiceTests {
     private ListDataService listDataService;
 
     @Test
-    public void addItemToList() {
-        final ItemDM item = new ItemDM();
-        item.setName("Soda");
-        item.setDescription("Can be different flavors");
-        item.setItemCount(3);
-        item.setImage("/this/is/a/path");
-        final ListDM list = new ListDM();
-        list.setId("12345");
-        item.setList(list);
+    public void updateAssignee() {
+        final String itemId = "i28767";
+        final String newAssigneeId = "4234234";
 
-        itemDataService.saveItem(item);
+        itemDataService.updateAssignee(itemId, newAssigneeId);
+        final ItemDM updatedItem = itemDataService.findById(itemId);
 
-        final ListDM savedList = listDataService.findListById("12345");
-        // FIXME: not saving item to list
-        Assertions.assertEquals(savedList.getItems().size(), 1);
+        Assertions.assertNotNull(updatedItem);
+        Assertions.assertEquals(updatedItem.getAssignee(), newAssigneeId);
     }
 }
