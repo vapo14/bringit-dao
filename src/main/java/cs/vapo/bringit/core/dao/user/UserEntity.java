@@ -4,17 +4,20 @@ import cs.vapo.bringit.core.dao.list.ListEntity;
 import cs.vapo.bringit.core.dao.participant.ParticipantEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.List;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "USERS")
 public class UserEntity {
 
     @Id
+    @UuidGenerator
     @Column(name = "id")
     private String id;
 

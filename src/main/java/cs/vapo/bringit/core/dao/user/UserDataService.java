@@ -45,4 +45,13 @@ public class UserDataService {
         }
         return mapper.map(userEntity.get(), UserDM.class);
     }
+
+    /**
+     * Creates the user given validated user data
+     * @param userData validated user data
+     */
+    public void createUser(final UserForLoginDM userData) {
+        final UserEntity userEntity = mapper.map(userData, UserEntity.class);
+        repository.save(userEntity);
+    }
 }

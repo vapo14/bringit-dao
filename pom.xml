@@ -10,9 +10,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cs.vapo</groupId>
-	<artifactId>bringit</artifactId>
+	<artifactId>bringit-dao</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bringit</name>
+	<name>bringit-dao</name>
 	<description>DAO for bringit core</description>
 	<properties>
 		<java.version>17</java.version>
@@ -40,12 +40,14 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
