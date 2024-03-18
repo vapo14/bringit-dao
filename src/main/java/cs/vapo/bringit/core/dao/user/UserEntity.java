@@ -33,13 +33,6 @@ public class UserEntity {
     @Column(name = "password_salt")
     private String passwordSalt;
 
-    @OneToMany(mappedBy = "owner")
-    private List<ListEntity> lists;
-
-    @OneToMany(mappedBy = "participant")
-    private List<ParticipantEntity> participantLists;
-
-
     public String getId() {
         return id;
     }
@@ -80,19 +73,4 @@ public class UserEntity {
         this.passwordSalt = passwordSalt;
     }
 
-    public List<ListEntity> getLists() {
-        return lists;
-    }
-
-    public void setLists(List<ListEntity> lists) {
-        this.lists = lists;
-    }
-
-    public List<ParticipantEntity> getParticipantLists() {
-        return participantLists;
-    }
-
-    public void setParticipantLists(List<ParticipantEntity> participantLists) {
-        this.participantLists = participantLists;
-    }
 }

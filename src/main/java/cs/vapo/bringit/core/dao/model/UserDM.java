@@ -1,7 +1,5 @@
 package cs.vapo.bringit.core.dao.model;
 
-import java.util.List;
-
 public class UserDM {
 
     private String id;
@@ -9,10 +7,6 @@ public class UserDM {
     private String username;
 
     private String email;
-
-    private List<ListDM> lists;
-
-    private List<ParticipantDM> participantLists;
 
     public String getId() {
         return id;
@@ -36,21 +30,5 @@ public class UserDM {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<ListDM> getLists() {
-        return lists;
-    }
-
-    public void setLists(List<ListDM> lists) {
-        this.lists = lists;
-    }
-
-    public List<ParticipantDM> getParticipantLists() {
-        return participantLists;
-    }
-
-    public void setParticipantLists(List<ParticipantDM> participantLists) {
-        this.participantLists = participantLists;
     }
 }

@@ -9,7 +9,8 @@ CREATE TABLE users (
    password VARCHAR(255) NULL,
    password_salt VARCHAR(255) NULL,
    CONSTRAINT pk_users PRIMARY KEY (id),
-   CONSTRAINT username_users UNIQUE (username)
+   CONSTRAINT username_users UNIQUE (username),
+   CONSTRAINT email_users UNIQUE (email)
 );
 
 

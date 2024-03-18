@@ -1,6 +1,7 @@
 package cs.vapo.bringit.core.dao.user;
 
 import cs.vapo.bringit.core.dao.annotations.DataService;
+import cs.vapo.bringit.core.dao.mapper.MapperUtils;
 import cs.vapo.bringit.core.dao.model.UserDM;
 import cs.vapo.bringit.core.dao.model.UserForLoginDM;
 import jakarta.persistence.EntityNotFoundException;
@@ -49,9 +50,27 @@ public class UserDataService {
     /**
      * Creates the user given validated user data
      * @param userData validated user data
+     * @return the user ID
      */
-    public void createUser(final UserForLoginDM userData) {
+    public String createUser(final UserForLoginDM userData) {
         final UserEntity userEntity = mapper.map(userData, UserEntity.class);
-        repository.save(userEntity);
+        return repository.save(userEntity).getId();
+    }
+
+    /**
+     * Updates a user with the provided user data
+     * @param userId the user id to update
+     * @param userData the updated user data
+     * @return the user id
+     */
+    public String updateUser(final String userId, final UserForLoginDM userData) {
+        final Optional<UserEntity> entityOptional = repository.findById(userId);
+        if (entityOptional.isEmpty()) {
+            throw new EntityNotFoundException(
+                    String.format("User with id: %s not found for operation update user.", userId));
+        }
+        final UserEntity existingUser = entityOptional.get();
+        MapperUtils.mapNonNull(userData, existingUser, null);
+        return existingUser.getId();
     }
 }
