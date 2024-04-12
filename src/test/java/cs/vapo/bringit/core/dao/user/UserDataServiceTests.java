@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @ActiveProfiles("test")
 @Transactional
-public class UserDataServiceTests {
+class UserDataServiceTests {
 
     @Autowired
     private UserDataService dataService;
