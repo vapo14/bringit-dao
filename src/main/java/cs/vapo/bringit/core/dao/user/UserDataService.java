@@ -13,11 +13,15 @@ import java.util.Optional;
 @DataService
 public class UserDataService {
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
+
+    private final ModelMapper mapper;
 
     @Autowired
-    private ModelMapper mapper;
+    public UserDataService(final UserRepository repository, final ModelMapper modelMapper) {
+        this.repository = repository;
+        this.mapper = modelMapper;
+    }
 
     /**
      * Returns the {@link UserForLoginDM} for login operations
@@ -72,5 +76,13 @@ public class UserDataService {
         final UserEntity existingUser = entityOptional.get();
         MapperUtils.mapNonNull(userData, existingUser, null);
         return existingUser.getId();
+    }
+
+    /**
+     * Deletes a user given the userId
+     * @param userId the userId to delete
+     */
+    public void deleteUser(final String userId) {
+        repository.deleteById(userId);
     }
 }
