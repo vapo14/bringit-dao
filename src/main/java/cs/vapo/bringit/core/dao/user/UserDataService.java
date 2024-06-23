@@ -43,7 +43,7 @@ public class UserDataService {
      * @return {@link UserDM} the user
      * @throws EntityNotFoundException if user not found for the given id
      */
-    public UserDM findUserById(final String userId) throws EntityNotFoundException {
+    public UserDM findUserById(final long userId) throws EntityNotFoundException {
         final Optional<UserEntity> userEntity = repository.findById(userId);
         if (userEntity.isEmpty()) {
             throw new EntityNotFoundException(String.format("Could not find user with id: %s", userId));
@@ -56,7 +56,7 @@ public class UserDataService {
      * @param userData validated user data
      * @return the user ID
      */
-    public String createUser(final UserForLoginDM userData) {
+    public long createUser(final UserForLoginDM userData) {
         final UserEntity userEntity = mapper.map(userData, UserEntity.class);
         return repository.save(userEntity).getId();
     }
@@ -67,7 +67,7 @@ public class UserDataService {
      * @param userData the updated user data
      * @return the user id
      */
-    public String updateUser(final String userId, final UserForLoginDM userData) {
+    public long updateUser(final long userId, final UserForLoginDM userData) {
         final Optional<UserEntity> entityOptional = repository.findById(userId);
         if (entityOptional.isEmpty()) {
             throw new EntityNotFoundException(
@@ -82,7 +82,7 @@ public class UserDataService {
      * Deletes a user given the userId
      * @param userId the userId to delete
      */
-    public void deleteUser(final String userId) {
+    public void deleteUser(final long userId) {
         repository.deleteById(userId);
     }
 }

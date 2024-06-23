@@ -1,7 +1,5 @@
 package cs.vapo.bringit.core.dao.mapper;
 
-import cs.vapo.bringit.core.dao.model.UserForLoginDM;
-import cs.vapo.bringit.core.dao.user.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;

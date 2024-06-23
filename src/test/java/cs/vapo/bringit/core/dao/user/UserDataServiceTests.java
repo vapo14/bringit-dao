@@ -28,7 +28,7 @@ class UserDataServiceTests {
 
     @Test
     void findById() {
-        final String userId = "1234";
+        final long userId = 1234;
         final String expectedUsername = "vapo";
 
         final UserDM user = dataService.findUserById(userId);

@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @ActiveProfiles("test")
 @Transactional
-public class ItemDataServiceTests {
+class ItemDataServiceTests {
 
     @Autowired
     private ItemDataService itemDataService;
@@ -22,9 +22,9 @@ public class ItemDataServiceTests {
     private ListDataService listDataService;
 
     @Test
-    public void updateAssignee() {
-        final String itemId = "i28767";
-        final String newAssigneeId = "4234234";
+    void updateAssignee() {
+        final long itemId = 28767;
+        final long newAssigneeId = 4234234;
 
         itemDataService.updateAssignee(itemId, newAssigneeId);
         final ItemDM updatedItem = itemDataService.findById(itemId);

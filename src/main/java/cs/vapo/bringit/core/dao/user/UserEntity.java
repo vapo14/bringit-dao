@@ -1,25 +1,20 @@
 package cs.vapo.bringit.core.dao.user;
 
-import cs.vapo.bringit.core.dao.list.ListEntity;
-import cs.vapo.bringit.core.dao.participant.ParticipantEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import java.util.List;
-import org.hibernate.annotations.UuidGenerator;
-
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private long id;
 
     @Column(name = "username")
     private String username;
@@ -33,11 +28,11 @@ public class UserEntity {
     @Column(name = "password_salt")
     private String passwordSalt;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
