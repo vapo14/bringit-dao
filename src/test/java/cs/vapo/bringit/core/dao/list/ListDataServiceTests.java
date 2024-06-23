@@ -49,7 +49,7 @@ class ListDataServiceTests {
         final ItemDM item = new ItemDM();
         item.setName("Soda");
         item.setDescription("Can be different flavors");
-        item.setItemCount(3);
+        item.setQuantity(3);
         item.setImage("/this/is/a/path");
 
         listDataService.addItemToList(12345L, item);

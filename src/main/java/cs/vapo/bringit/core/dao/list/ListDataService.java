@@ -67,6 +67,7 @@ public class ListDataService {
         }
         final ListEntity list = listOptional.get();
         list.getItems().add(itemEntity);
+        list.setItemCount(list.getItemCount() + 1);
     }
 
     /**

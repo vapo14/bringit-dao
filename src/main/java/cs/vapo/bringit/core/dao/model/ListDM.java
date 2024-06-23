@@ -7,11 +7,15 @@ public class ListDM {
 
     private long id;
 
+    private String publicId;
+
     private UserDM owner;
 
     private String title;
 
     private LocalDate eventDate;
+
+    private int itemCount;
 
     private List<ParticipantDM> participants;
 
@@ -23,6 +27,14 @@ public class ListDM {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
     }
 
     public UserDM getOwner() {
@@ -63,5 +75,13 @@ public class ListDM {
 
     public void setEventDate(LocalDate eventDate) {
         this.eventDate = eventDate;
+    }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    public void setItemCount(int itemCount) {
+        this.itemCount = itemCount;
     }
 }

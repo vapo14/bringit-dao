@@ -8,7 +8,7 @@ public class ItemDM {
 
     private String description;
 
-    private int itemCount;
+    private int quantity;
 
     private String image;
 
@@ -40,12 +40,12 @@ public class ItemDM {
         this.description = description;
     }
 
-    public int getItemCount() {
-        return itemCount;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setItemCount(int itemCount) {
-        this.itemCount = itemCount;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getImage() {

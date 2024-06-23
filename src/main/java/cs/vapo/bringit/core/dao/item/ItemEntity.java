@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "ITEMS")
@@ -26,8 +25,8 @@ public class ItemEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "item_count")
-    private int itemCount;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "image")
     private String image;
@@ -63,12 +62,12 @@ public class ItemEntity {
         this.description = description;
     }
 
-    public int getItemCount() {
-        return itemCount;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setItemCount(int itemCount) {
-        this.itemCount = itemCount;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getImage() {
