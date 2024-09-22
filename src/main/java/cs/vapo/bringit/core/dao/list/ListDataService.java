@@ -86,4 +86,17 @@ public class ListDataService {
         final ListEntity savedList = listRepository.save(newList);
         return modelMapper.map(savedList, ListDM.class);
     }
+
+    /**
+     * Retrieves a list's ownerId
+     * @param listId the listId to lookup
+     * @return the list's ownerId
+     */
+    public long retrieveOwnerId(final long listId) {
+        final Optional<ListEntity> ownerIdOptional = listRepository.findOwnerIdById(listId);
+        if (ownerIdOptional.isEmpty()) {
+            throw new EntityNotFoundException(String.format("List with id: %s was not found", listId));
+        }
+        return ownerIdOptional.get().getOwner().getId();
+    }
 }

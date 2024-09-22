@@ -82,4 +82,14 @@ class ListDataServiceTests {
                 // do not add this userId to test data
                 () -> listDataService.createList(938383838, list));
     }
+
+    @Test
+    void retrieveOwnerId() {
+        final long listId = 12345;
+        final long expectedOwnerId = 1234;
+
+        final long actualOwnerId = listDataService.retrieveOwnerId(listId);
+
+        Assertions.assertEquals(expectedOwnerId, actualOwnerId);
+    }
 }

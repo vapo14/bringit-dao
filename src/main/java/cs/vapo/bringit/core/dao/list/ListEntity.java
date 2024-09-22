@@ -11,13 +11,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "bringit_core_list")
@@ -27,9 +24,6 @@ public class ListEntity {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(name = "public_id", nullable = false, unique = true)
-    private String publicId;
 
     @ManyToOne
     @JoinColumn(name = "owner", nullable = false)
@@ -51,30 +45,12 @@ public class ListEntity {
     @OneToMany(mappedBy = "list")
     private List<ItemEntity> items;
 
-    /**
-     * This method will populate the publicId field before creation
-     */
-    @PrePersist
-    private void generatePublicId() {
-        if (StringUtils.isBlank(this.publicId)) {
-            this.publicId = UUID.randomUUID().toString();
-        }
-    }
-
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getPublicId() {
-        return publicId;
-    }
-
-    public void setPublicId(String publicId) {
-        this.publicId = publicId;
     }
 
     public UserEntity getOwner() {

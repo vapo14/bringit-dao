@@ -2,7 +2,6 @@ package cs.vapo.bringit.core.dao.item;
 
 import cs.vapo.bringit.core.dao.annotations.DataService;
 import cs.vapo.bringit.core.dao.model.ItemDM;
-import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Optional;

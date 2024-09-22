@@ -1,7 +1,4 @@
-select * from users;
-delete from users where id = '9eb6fd3f-4bba-4e57-9e52-c81f67e11c01';
-
-drop table users;
+drop table if exists users;
 
 
 CREATE TABLE users (
@@ -15,7 +12,7 @@ CREATE TABLE users (
    CONSTRAINT email_users UNIQUE (email)
 );
 
-drop table bringit_core_list;
+drop table if exists bringit_core_list;
 
 CREATE TABLE bringit_core_list (
   id BIGINT NOT NULL auto_increment,
@@ -24,23 +21,19 @@ CREATE TABLE bringit_core_list (
    participants VARCHAR(255) NULL,
    event_ts DATE NOT NULL,
    item_count INT NOT NULL,
-   public_id VARCHAR(255) NOT NULL,
    CONSTRAINT pk_bringit_core_list PRIMARY KEY (id)
 );
 
-CREATE INDEX idx_list_publicId ON bringit_core_list (public_id);
-
-select * from bringit_core_list;
-
-
+drop table if exists participant_reg;
 
 CREATE TABLE participant_reg (
   id INT NOT NULL,
-   list BIGINT NULL,
-   participant INT NULL,
+   list BIGINT NULL references bringit_core_list (id),
+   participant INT NULL references users (id),
    CONSTRAINT pk_participant_reg PRIMARY KEY (id)
 );
 
+drop table if exists items;
 
 CREATE TABLE items (
     id BIGINT NOT NULL,
@@ -49,5 +42,15 @@ CREATE TABLE items (
     quantity VARCHAR(255) NOT NULL,
     image VARCHAR(255) NOT NULL,
     assignee VARCHAR(255) NOT NULL,
-    list_id BIGINT NOT NULL
+    list_id BIGINT NOT NULL,
+    CONSTRAINT pk_items PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS contacts;
+
+CREATE TABLE contacts (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    user_id BIGINT NOT NULL references users (id),
+    contact_id BIGINT NOT NULL references users (id),
+    CONSTRAINT pk_contacts PRIMARY KEY (id)
 );
