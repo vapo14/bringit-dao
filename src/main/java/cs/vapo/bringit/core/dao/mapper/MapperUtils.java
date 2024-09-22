@@ -1,7 +1,5 @@
 package cs.vapo.bringit.core.dao.mapper;
 
-import cs.vapo.bringit.core.dao.model.UserForLoginDM;
-import cs.vapo.bringit.core.dao.user.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
@@ -18,6 +16,15 @@ public class MapperUtils {
 
     }
 
+    /**
+     * Maps a list of source objects to a list of target objects. This method will map non-null fields so long
+     * as they match on both source and target classes.
+     * @param source the source list to map
+     * @param targetClass the target class for the mapped list
+     * @return a mapped list of target objects
+     * @param <S> source type
+     * @param <T> target type
+     */
     public static <S, T> List<T> mapList(List<S> source, Class<T> targetClass) {
         final ModelMapper modelMapper = new ModelMapper();
         return source
@@ -37,7 +44,7 @@ public class MapperUtils {
         final BeanWrapper sourceWrapper = new BeanWrapperImpl(source);
         final BeanWrapper targetWrapper = new BeanWrapperImpl(target);
         if (ignorable == null) {
-            ignorable = new HashSet<>();
+            ignorable = new HashSet<>(0);
         }
 
         for (final PropertyDescriptor descriptor : sourceWrapper.getPropertyDescriptors()) {

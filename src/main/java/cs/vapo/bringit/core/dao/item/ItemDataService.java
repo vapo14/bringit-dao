@@ -2,7 +2,6 @@ package cs.vapo.bringit.core.dao.item;
 
 import cs.vapo.bringit.core.dao.annotations.DataService;
 import cs.vapo.bringit.core.dao.model.ItemDM;
-import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -23,7 +22,7 @@ public class ItemDataService {
      * @param itemId the item to update
      * @param userId the userId of the new assignee
      */
-    public void updateAssignee(final String itemId, final String userId) {
+    public void updateAssignee(final long itemId, final long userId) {
         final Optional<ItemEntity> itemEntityOptional = repository.findById(itemId);
         if (itemEntityOptional.isEmpty()) {
             throw new EntityNotFoundException(String.format("No item found for id: %s", itemId));
@@ -38,7 +37,7 @@ public class ItemDataService {
      * @return the item if present, null otherwise
      */
     @Nullable
-    public ItemDM findById(@Nonnull final String itemId) {
+    public ItemDM findById(final long itemId) {
         final Optional<ItemEntity> itemEntityOptional = repository.findById(itemId);
         if (itemEntityOptional.isEmpty()) {
             throw new EntityNotFoundException(String.format("No item found for id: %s", itemId));

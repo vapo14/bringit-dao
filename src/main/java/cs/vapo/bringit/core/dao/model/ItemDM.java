@@ -2,25 +2,25 @@ package cs.vapo.bringit.core.dao.model;
 
 public class ItemDM {
 
-    private String id;
+    private long id;
 
     private String name;
 
     private String description;
 
-    private int itemCount;
+    private int quantity;
 
     private String image;
 
-    private String assignee;
+    private long assignee;
 
     private ListDM list;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -40,12 +40,12 @@ public class ItemDM {
         this.description = description;
     }
 
-    public int getItemCount() {
-        return itemCount;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setItemCount(int itemCount) {
-        this.itemCount = itemCount;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getImage() {
@@ -56,11 +56,11 @@ public class ItemDM {
         this.image = image;
     }
 
-    public String getAssignee() {
+    public long getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(String assignee) {
+    public void setAssignee(long assignee) {
         this.assignee = assignee;
     }
 

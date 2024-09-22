@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -28,10 +31,22 @@ class UserDataServiceTests {
 
     @Test
     void findById() {
-        final String userId = "1234";
+        final long userId = 1234;
         final String expectedUsername = "vapo";
 
         final UserDM user = dataService.findUserById(userId);
         Assertions.assertEquals(expectedUsername, user.getUsername());
+    }
+
+    @Test
+    void addContact() {
+        final long userId = 1234;
+        final long contactId = 3333;
+
+        dataService.addContact(userId, contactId);
+        List<UserDM> contacts = dataService.retrieveUserContacts(userId, Pageable.unpaged());
+
+        Assertions.assertEquals(1, contacts.size());
+        Assertions.assertEquals(contactId, contacts.get(0).getId());
     }
 }

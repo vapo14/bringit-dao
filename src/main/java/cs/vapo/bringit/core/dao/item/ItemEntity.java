@@ -3,20 +3,21 @@ package cs.vapo.bringit.core.dao.item;
 import cs.vapo.bringit.core.dao.list.ListEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "ITEMS")
 public class ItemEntity {
 
     @Id
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -24,24 +25,24 @@ public class ItemEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "item_count")
-    private int itemCount;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Column(name = "image")
     private String image;
 
     @Column(name = "assignee")
-    private String assignee;
+    private long assignee;
 
     @ManyToOne
     @JoinColumn(name = "list_id", nullable = false)
     private ListEntity list;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -61,12 +62,12 @@ public class ItemEntity {
         this.description = description;
     }
 
-    public int getItemCount() {
-        return itemCount;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setItemCount(int itemCount) {
-        this.itemCount = itemCount;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getImage() {
@@ -77,11 +78,11 @@ public class ItemEntity {
         this.image = image;
     }
 
-    public String getAssignee() {
+    public long getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(String assignee) {
+    public void setAssignee(long assignee) {
         this.assignee = assignee;
     }
 

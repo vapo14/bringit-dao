@@ -5,21 +5,25 @@ import cs.vapo.bringit.core.dao.participant.ParticipantEntity;
 import cs.vapo.bringit.core.dao.user.UserEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "BRINGIT_CORE_LIST")
+@Table(name = "bringit_core_list")
 public class ListEntity {
 
     @Id
     @Column(name = "id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "owner", nullable = false)
@@ -28,6 +32,12 @@ public class ListEntity {
     @Column(name = "list_title")
     private String title;
 
+    @Column(name = "event_ts")
+    private LocalDate eventDate;
+
+    @Column(name = "item_count")
+    private int itemCount;
+
     @OneToMany
     @JoinColumn(name = "list")
     private List<ParticipantEntity> participants;
@@ -35,11 +45,11 @@ public class ListEntity {
     @OneToMany(mappedBy = "list")
     private List<ItemEntity> items;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -73,5 +83,21 @@ public class ListEntity {
 
     public void setItems(List<ItemEntity> items) {
         this.items = items;
+    }
+
+    public LocalDate getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    public void setItemCount(int itemCount) {
+        this.itemCount = itemCount;
     }
 }

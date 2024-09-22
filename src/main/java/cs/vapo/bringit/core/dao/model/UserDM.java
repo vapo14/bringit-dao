@@ -2,17 +2,17 @@ package cs.vapo.bringit.core.dao.model;
 
 public class UserDM {
 
-    private String id;
+    private long id;
 
     private String username;
 
     private String email;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
