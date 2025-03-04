@@ -2,6 +2,7 @@ package cs.vapo.bringit.core.dao.list;
 
 import cs.vapo.bringit.core.dao.annotations.DataService;
 import cs.vapo.bringit.core.dao.item.ItemEntity;
+import cs.vapo.bringit.core.dao.item.ItemRepository;
 import cs.vapo.bringit.core.dao.mapper.MapperUtils;
 import cs.vapo.bringit.core.dao.model.ItemDM;
 import cs.vapo.bringit.core.dao.model.ListDM;
@@ -23,11 +24,15 @@ public class ListDataService {
 
     private final ModelMapper modelMapper;
 
+    private final ItemRepository itemRepository;
+
     @Autowired
-    public ListDataService(final ListRepository listRepository, final UserRepository userRepository, final ModelMapper modelMapper) {
+    public ListDataService(final ListRepository listRepository, final UserRepository userRepository,
+                           final ModelMapper modelMapper, final ItemRepository itemRepository) {
         this.listRepository = listRepository;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.itemRepository = itemRepository;
     }
 
     /**
@@ -66,8 +71,10 @@ public class ListDataService {
             throw new EntityNotFoundException(String.format("List id %s not found for operation insert item", listId));
         }
         final ListEntity list = listOptional.get();
+        itemEntity.setList(list);
         list.getItems().add(itemEntity);
         list.setItemCount(list.getItemCount() + 1);
+        itemRepository.save(itemEntity);
     }
 
     /**
