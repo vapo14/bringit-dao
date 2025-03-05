@@ -1,28 +1,18 @@
 package cs.vapo.bringit.core.dao.model;
 
-import java.util.List;
-
 public class UserDM {
 
-    private String id;
+    private long id;
 
     private String username;
 
     private String email;
 
-    private String password;
-
-    private String passwordSalt;
-
-    private List<ListDM> lists;
-
-    private List<ParticipantDM> participantLists;
-
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -40,37 +30,5 @@ public class UserDM {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPasswordSalt() {
-        return passwordSalt;
-    }
-
-    public void setPasswordSalt(String passwordSalt) {
-        this.passwordSalt = passwordSalt;
-    }
-
-    public List<ListDM> getLists() {
-        return lists;
-    }
-
-    public void setLists(List<ListDM> lists) {
-        this.lists = lists;
-    }
-
-    public List<ParticipantDM> getParticipantLists() {
-        return participantLists;
-    }
-
-    public void setParticipantLists(List<ParticipantDM> participantLists) {
-        this.participantLists = participantLists;
     }
 }
